@@ -1,6 +1,7 @@
 let list = document.getElementById('list');
 let input = document.getElementById('input');
 let addtoListBtn = document.getElementById('add-to-List');
+let massegAlert= document.getElementById('massege-alert')
 
 function loadListFromStorage() {
     const savedList = localStorage.getItem('todoList');
@@ -25,9 +26,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 addtoListBtn.addEventListener('click', function () {
     if (input.value === '') {
-        alert('Please Enetr Text');
-    }
-    else{
+        massegAlert.style.display = 'block'
+        massegAlert.style.color = 'red'
+    } else{
     let listItem = document.createElement('li');
     listItem.textContent = input.value;
 
@@ -43,6 +44,8 @@ addtoListBtn.addEventListener('click', function () {
     listItem.appendChild(removeBtn);
     list.appendChild(listItem);
     input.value = '';
+
+    massegAlert.style.display = 'none'
 
     saveListToStorage();
 }
